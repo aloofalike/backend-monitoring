@@ -1,4 +1,4 @@
-Django==2.2.3
-sentry-sdk==0.15.1
-djangorestframework==3.10.0
-django-cors-headers==3.0.2
+Django
+sentry-sdk
+djangorestframework
+django-cors-headers

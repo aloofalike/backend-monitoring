@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.urls import path, include
 
+def trigger_error(req):
+    print(1/0)
+
+
 urlpatterns = [
+    path("sentry-debug", trigger_error),
     path(r'', include('myapp.urls')),
 ]

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,16 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-# Import configure and initialize Sentry SDK
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
-sentry_sdk.init(
-    dsn="YOUR_DSN",
-    integrations=[DjangoIntegration()],
-    release=os.environ.get("VERSION"),
-    environment="Production"
-)
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',    
@@ -152,3 +144,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+sentry_sdk.init(
+    dsn="https://80dad1998eec4db0aca9da9b163a87e6@o4504530041765888.ingest.sentry.io/4504603634302976",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    release="backend-monitoring@0.0.0-beta",
+    environment="development",
+    traces_sample_rate=1.0,
+    send_default_pii=True,
+)
