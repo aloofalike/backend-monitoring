@@ -150,7 +150,7 @@ sentry_sdk.init(
     integrations=[
         DjangoIntegration(),
     ],
-    release="backend-monitoring@0.0.0-beta",
+    release="backend-monitor@v0.0.1-beta",
     environment="development",
     traces_sample_rate=1.0,
     send_default_pii=True,
