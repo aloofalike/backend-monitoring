@@ -31,6 +31,7 @@ def process_order(cart):
         itemID = item['id']
         inventoryItem = find_in_inventory(itemID)
         if inventoryItem['count'] <= 0:
+            # catch this
             raise Exception("Not enough inventory for " + itemID) 
         else:
             inventoryItem['count'] -= 1

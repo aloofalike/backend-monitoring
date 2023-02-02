@@ -1,6 +1,5 @@
-SENTRY_AUTH_TOKEN=<your_auth_token>
-SENTRY_ORG=<YOUR ORG NAME>
-SENTRY_PROJECT=<YOUR PROJECT NAME>
+SENTRY_ORG=hyuti-jb
+SENTRY_PROJECT=python-django
 VERSION=`sentry-cli releases propose-version`
 
 deploy: install create_release associate_commits run_django
