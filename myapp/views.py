@@ -19,6 +19,8 @@ def find_in_inventory(itemId):
             return item
     raise Exception("Item : " + itemId + " not in inventory ")
 
+class DumpException(Exception):
+    pass
 def process_order(cart):
     add_breadcrumb(
         category='Process Order',
@@ -31,8 +33,7 @@ def process_order(cart):
         itemID = item['id']
         inventoryItem = find_in_inventory(itemID)
         if inventoryItem['count'] <= 0:
-            # catch this
-            raise Exception("Not enough inventory for " + itemID) 
+            raise DumpException("Not enough inventory for " + itemID) 
         else:
             inventoryItem['count'] -= 1
             print( 'Success: ' + itemID + ' was purchased, remaining stock is ' + str(inventoryItem['count']) )
